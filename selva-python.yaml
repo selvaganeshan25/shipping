@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selva-frontend
+  namespace: batch2
+  labels:
+    app: flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-container
+        image: 915551958967.dkr.ecr.ap-south-1.amazonaws.com/flask_container:selvaganeshan 
+        ports:
+        - containerPort: 5000
+          protocol: TCP
